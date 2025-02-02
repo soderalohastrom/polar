@@ -1,0 +1,17 @@
+[project]
+name = "polar-server"
+version = "0.1.0"
+description = "Backend server for Paumalu SaaS service"
+authors = ["Cline <cline@example.com>"]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy",
+    "redis",
+    "pytest",
+]
+
+[tool.taskipy.tasks]
+api = "uvicorn app:app --reload --port 8000"
+worker = "python worker.py"
+db_migrate = "alembic upgrade head"
